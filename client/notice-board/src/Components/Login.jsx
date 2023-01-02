@@ -20,11 +20,12 @@ export const Login = () => {
             });
             navigate("/notices");
         } catch (error) {
-            // console.log(error,"errrr");
+            console.log(error,"errrr");
+            alert("Please enter alphanumeric username only!")
             // console.log(error.response.data.errors.username.message);
-            // alert("Please enter alphanumeric username only!")
         }
     }
+
     return (
         <div>
             <form onSubmit={handleSubmit}>
