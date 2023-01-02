@@ -21,7 +21,7 @@ export const Login = () => {
             navigate("/notices");
         } catch (error) {
             console.log(error,"errrr");
-            alert("Please enter alphanumeric username only!")
+            // alert("Please enter alphanumeric username only!")
             // console.log(error.response.data.errors.username.message);
         }
     }
