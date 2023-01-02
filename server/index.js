@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import connection from './config/db.js';
 import userRouter from './routes/users.routes.js';
-import postRouter from './routes/notices.route.js';
+import postRouter from './routes/notices.routes.js';
 
 const app = express();
 app.use(express.json());

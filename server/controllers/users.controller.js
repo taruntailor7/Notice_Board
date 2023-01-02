@@ -1,10 +1,10 @@
 import { userModel } from "../models/users.model.js";
 
+// Login User
 export const login = async (req, res) => {
     try {
-        let user = req.body;
-        let {username} = user;
-        let newUser = await userModel.create({username});
+        let username = req.body;
+        let newUser = await userModel.create(username);
         newUser = newUser.toJSON();
         return res.send({
             error:false,

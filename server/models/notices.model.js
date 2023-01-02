@@ -1,9 +1,10 @@
 import mongoose from "mongoose";
 
-const noticeSchema = new Schema({
+const noticeSchema = new mongoose.Schema({
     desc:{
         type: String,
         required: true,
+        minlength:100
     },
     username:{
         type: String,
@@ -15,4 +16,4 @@ const noticeSchema = new Schema({
     }
 },{timestamps: true, versionKey: false})
 
-export const userModel = mongoose.model("notices",noticeSchema);
+export const noticeModel = mongoose.model("notices",noticeSchema);
