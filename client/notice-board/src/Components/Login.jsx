@@ -20,9 +20,9 @@ export const Login = () => {
                 } else{
                     localStorage.setItem("username",JSON.stringify(res.data.data.username))
                     alert(res.data.message);
+                    navigate("/notices");
                 }
             });
-            navigate("/notices");
         } catch (error) {
             console.log(error,"errrr");
         }
@@ -31,10 +31,9 @@ export const Login = () => {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <input type="text" placeholder='Enter Username' name="username" onChange={handleChange}/>
+                <input type="text" placeholder='Enter Username' name="username" value={username} onChange={handleChange}/>
                 <button type="submit">Submit</button>
             </form>
-            
         </div>
     )
 }
