@@ -15,14 +15,16 @@ export const Login = () => {
         try {
             axios.post("https://notice-board-z3uw.onrender.com/auth/login",{username})
             .then((res)=>{
-                localStorage.setItem("username",JSON.stringify(res.data.data.username))
-                alert(res.data.message)
+                if(res.data.error){
+                    alert(res.data.message);
+                } else{
+                    localStorage.setItem("username",JSON.stringify(res.data.data.username))
+                    alert(res.data.message);
+                }
             });
             navigate("/notices");
         } catch (error) {
             console.log(error,"errrr");
-            // alert("Please enter alphanumeric username only!")
-            // console.log(error.response.data.errors.username.message);
         }
     }
 
