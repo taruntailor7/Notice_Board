@@ -12,7 +12,7 @@ export const login = async (req, res) => {
             data: newUser
         })
     } catch (error) {
-        return res.status(500).send(error);
+        return res.status(400).send(error);
     }
 }
 
