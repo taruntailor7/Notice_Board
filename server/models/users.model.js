@@ -9,7 +9,8 @@ const userSchema = new mongoose.Schema({
             message: "Please enter alphanumeric username only!"
         },
     },
-},{timestamp: true, versionKey: false})
+},{timestamps: true, versionKey: false});
 
 export const userModel = mongoose.model("users",userSchema);
+
 
