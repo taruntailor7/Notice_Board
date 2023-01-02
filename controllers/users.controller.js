@@ -3,8 +3,9 @@ import { userModel } from "../models/users.model.js";
 // Login User
 export const login = async (req, res) => {
     try {
-        let username = req.body;
-
+        let user = req.body;
+        let {username} = user;
+        console.log(username)
         const regEx = /^[0-9a-zA-Z]+$/;
 
         if(username.match(regEx)){
