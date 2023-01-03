@@ -5,8 +5,8 @@ import { useNavigate } from 'react-router';
 
 export const Login = () => {
     const [username,setUsername] = useState("");
-    let user = JSON.parse(sessionStorage.getItem("username")) || false ;
     const navigate = useNavigate();
+    let user = JSON.parse(sessionStorage.getItem("username")) || false ;
 
     useEffect(()=>{
         if(user){
@@ -18,6 +18,7 @@ export const Login = () => {
     const handleChange = (e) => {
         setUsername(e.target.value);
     }
+
     const handleSubmit = (e)=>{
         e.preventDefault();
         try {
@@ -30,7 +31,7 @@ export const Login = () => {
                     alert(res.data.message);
                     navigate("/notices");
                 }
-            });
+            }).catch((err)=>console.log(err));
         } catch (error) {
             console.log(error,"error");
         }
@@ -39,7 +40,7 @@ export const Login = () => {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <input type="text" placeholder='Enter Username' name="username" value={username} onChange={handleChange}/>
+                <input type="text" placeholder='Enter Username' name="username" value={username} onChange={handleChange} required/>
                 <button type="submit">Submit</button>
             </form>
         </div>
