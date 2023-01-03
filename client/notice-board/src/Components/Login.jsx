@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Login = () => {
     const [username,setUsername] = useState("");
@@ -15,27 +17,39 @@ export const Login = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
+    const showToastSuccessMessage = (msg) => {
+        toast.success(msg, {
+            position: toast.POSITION.TOP_CENTER
+        });
+    };
+    const showToastErrorMessage = (msg) => {
+        toast.error(msg, {
+            position: toast.POSITION.TOP_CENTER
+        });
+    };
+
     const handleChange = (e) => {
         setUsername(e.target.value);
     }
 
     const handleSubmit = (e)=>{
         e.preventDefault();
-        try {
-            axios.post("https://notice-board-z3uw.onrender.com/auth/login",{username})
-            .then((res)=>{
-                if(res.data.error){
-                    alert(res.data.message);
-                } else{
-                    sessionStorage.setItem("username",JSON.stringify(res.data.data.username))
-                    alert(res.data.message);
-                    navigate("/notices");
-                }
-            }).catch((err)=>console.log(err));
-        } catch (error) {
-            console.log(error,"error");
-        }
+        axios.post("https://notice-board-z3uw.onrender.com/auth/login",{username})
+        .then((res)=>{
+            if(res.data.error){
+                showToastErrorMessage(res.data.message);
+                showToastSuccessMessage(res.data.message);
+            } else{
+                sessionStorage.setItem("username",JSON.stringify(res.data.data.username));
+                showToastSuccessMessage(res.data.message);
+                alert(res.data.message);
+                navigate("/notices");
+
+            }
+        }).catch((err)=>console.log(err));
     }
+
+
 
     return (
         <div>
@@ -43,7 +57,7 @@ export const Login = () => {
                 <input type="text" placeholder='Enter Username' name="username" value={username} onChange={handleChange} required/>
                 <button type="submit">Submit</button>
             </form>
-            
+            <ToastContainer />
         </div>
     )
 }

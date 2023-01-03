@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { AllNotices } from "./AllNotices";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export const Notice = () => {
   const [desc, setDesc] = useState();
   const navigate = useNavigate();
@@ -15,31 +18,39 @@ export const Notice = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
+  const showToastSuccessMessage = (msg) => {
+    toast.success(msg, {
+        position: toast.POSITION.TOP_CENTER
+    });
+  };
+  const showToastErrorMessage = (msg) => {
+      toast.error(msg, {
+          position: toast.POSITION.TOP_CENTER
+      });
+  };
+
   const handleChange = (e) => {
-    setDesc(e.target.value)
+    setDesc(e.target.value);
   }
   const handleSubmit = (e) =>{
     e.preventDefault();
-    try {
-      axios.post("https://notice-board-z3uw.onrender.com/notices/create",{
-          desc:desc,
-          username:username
-      }).then((res)=>alert(res.data.message)) 
-        .catch(()=>{
-          alert("Notice should be minimum of 100 characters!")
-        });
-    } catch (error) {
-      console.log(error,"error")
-    } 
+    axios.post("https://notice-board-z3uw.onrender.com/notices/create",{
+      desc:desc,
+      username:username})
+    .then((res)=>showToastSuccessMessage(res.data.message)) 
+    .catch(()=>{
+      showToastErrorMessage("Notice should be minimum of 100 characters!")
+    });
   }
 
   return (
     <>
       <form onSubmit={handleSubmit}>
-          <textarea type="text" name="desc" placeholder='Enter Notice' rows="4" cols="50" onChange={handleChange} required/>
+          <textarea type="text" name="desc" placeholder='Enter Notice' rows="6" cols="100" onChange={handleChange} required/>
           <button type="submit">Submit</button>
       </form>
       <AllNotices />
+      <ToastContainer />
     </>
   )
 }
