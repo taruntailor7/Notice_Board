@@ -53,8 +53,8 @@ export const Login = () => {
         <div className='login'>
             <form onSubmit={handleSubmit}>
                 <h2>Pick a username</h2>
-                <input type="text" placeholder='Enter Username' name="username" value={username} onChange={handleChange} required/>
-                <button type="submit">Login</button>
+                <input className='username' type="text" placeholder='Enter Username' name="username" value={username} onChange={handleChange} required/>
+                <button className='loginBtn' type="submit">Login</button>
             </form>
             <ToastContainer />
         </div>

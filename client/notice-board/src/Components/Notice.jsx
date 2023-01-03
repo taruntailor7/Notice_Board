@@ -54,8 +54,8 @@ export const Notice = () => {
         <h1>Notice Board</h1>
         <h2>Submit a notice:</h2>
         <form onSubmit={handleSubmit}>
-            <textarea type="text" name="desc" placeholder='Enter Notice' rows="6" value={desc} cols="100" onChange={handleChange} required/>
-            <button type="submit" style={{background:"#63A8EC", border:"none"}}><AiOutlineSend fontSize="40px" color="white"/></button>
+            <textarea className='textarea' type="text" name="desc" placeholder='Enter Notice...' rows="5" value={desc} cols="100" onChange={handleChange} required/>
+            <button className='submitBtn' type="submit"><AiOutlineSend fontSize="40px" color="white"/></button>
         </form>
       </div>
       <AllNotices />

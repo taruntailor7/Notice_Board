@@ -11,14 +11,14 @@
 h2{
     font-family:sans-serif;
 }
-input{
+.username{
     width:100%;
     padding: 15px;
     border-radius: 10px;
     border: 2px solid black;
     outline: none;
 }
-button{
+.loginBtn{
     width:38%;
     padding: 10px;
     outline: none;
@@ -26,4 +26,5 @@ button{
     color: white;
     font-size: 20px;
     margin-top: 15px;
+    border-radius: 5px;
 }
