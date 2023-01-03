@@ -9,6 +9,7 @@ export const Login = () => {
     const [username,setUsername] = useState("");
     const navigate = useNavigate();
     let user = JSON.parse(sessionStorage.getItem("username")) || false ;
+    const [loading, setLoading] = useState(false)
 
     useEffect(()=>{
         if(user){
@@ -34,6 +35,7 @@ export const Login = () => {
 
     const handleSubmit = (e)=>{
         e.preventDefault();
+        setLoading(true);
         axios.post("https://notice-board-z3uw.onrender.com/auth/login",{username})
         .then((res)=>{
             if(res.data.error){
@@ -49,7 +51,9 @@ export const Login = () => {
         }).catch((err)=>console.log(err));
     }
 
-
+    if(loading){
+        return <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif?20151024034921" alt="loading" />;
+    }
 
     return (
         <div>

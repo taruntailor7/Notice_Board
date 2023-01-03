@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { AllNotices } from "./AllNotices";
-
+import { AiOutlineSend } from 'react-icons/ai';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -51,7 +51,7 @@ export const Notice = () => {
     <>
       <form onSubmit={handleSubmit}>
           <textarea type="text" name="desc" placeholder='Enter Notice' rows="6" value={desc} cols="100" onChange={handleChange} required/>
-          <button type="submit">Submit</button>
+          <button type="submit" style={{background:"#63A8EC", border:"none"}}><AiOutlineSend fontSize="40px" color="white"/></button>
       </form>
       <AllNotices />
       <ToastContainer />
