@@ -8,16 +8,17 @@ export const AllNotices = () => {
 
   useEffect(()=>{
     getAllNotices();
-  },[]);
+  },[notices]);
 
   const getAllNotices = ()=>{
     axios.get("https://notice-board-z3uw.onrender.com/notices")
-    .then((res)=>setNotices(res.data.data))
+    .then((res)=>setNotices(res.data.data.reverse()))
     .catch((err)=>console.log(err));
   }
+
   return (
     <div>
-       {notices.reverse().map((notice)=>(
+       {notices.map((notice)=>(
           <div key={notice._id}>
             <p>{notice.desc}</p>
             <p>{notice.username}</p>

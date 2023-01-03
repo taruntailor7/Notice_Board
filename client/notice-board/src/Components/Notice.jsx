@@ -32,12 +32,16 @@ export const Notice = () => {
   const handleChange = (e) => {
     setDesc(e.target.value);
   }
+
   const handleSubmit = (e) =>{
     e.preventDefault();
     axios.post("https://notice-board-z3uw.onrender.com/notices/create",{
       desc:desc,
       username:username})
-    .then((res)=>showToastSuccessMessage(res.data.message)) 
+    .then((res)=>{
+      showToastSuccessMessage(res.data.message);
+      setDesc("");
+    }) 
     .catch(()=>{
       showToastErrorMessage("Notice should be minimum of 100 characters!")
     });
@@ -46,7 +50,7 @@ export const Notice = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-          <textarea type="text" name="desc" placeholder='Enter Notice' rows="6" cols="100" onChange={handleChange} required/>
+          <textarea type="text" name="desc" placeholder='Enter Notice' rows="6" value={desc} cols="100" onChange={handleChange} required/>
           <button type="submit">Submit</button>
       </form>
       <AllNotices />

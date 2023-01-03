@@ -38,12 +38,12 @@ export const Login = () => {
         .then((res)=>{
             if(res.data.error){
                 showToastErrorMessage(res.data.message);
-                showToastSuccessMessage(res.data.message);
             } else{
                 sessionStorage.setItem("username",JSON.stringify(res.data.data.username));
                 showToastSuccessMessage(res.data.message);
-                alert(res.data.message);
-                navigate("/notices");
+                setTimeout(()=>{
+                    navigate("/notices");
+                },2000);
 
             }
         }).catch((err)=>console.log(err));
