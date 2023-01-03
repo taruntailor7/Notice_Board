@@ -25,7 +25,7 @@ export const AllNotices = () => {
   }
 
   return (
-    <div>
+    <div className='allNotices'>
        {notices.map((notice)=>(
           <div key={notice._id}>
             <p>{notice.desc}</p>
