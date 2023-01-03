@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import { AllNotices } from "./AllNotices";
 
 export const Notice = () => {
   const [desc, setDesc] = useState();
@@ -38,6 +39,7 @@ export const Notice = () => {
           <textarea type="text" name="desc" placeholder='Enter Notice' rows="4" cols="50" onChange={handleChange} required/>
           <button type="submit">Submit</button>
       </form>
+      <AllNotices />
     </>
   )
 }

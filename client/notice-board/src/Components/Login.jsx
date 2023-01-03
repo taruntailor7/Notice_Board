@@ -43,6 +43,7 @@ export const Login = () => {
                 <input type="text" placeholder='Enter Username' name="username" value={username} onChange={handleChange} required/>
                 <button type="submit">Submit</button>
             </form>
+            
         </div>
     )
 }
