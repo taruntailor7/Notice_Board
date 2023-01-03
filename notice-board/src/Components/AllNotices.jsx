@@ -1,7 +1,7 @@
+import React from 'react';
 import axios from 'axios';
-import React from 'react'
 import { useState } from 'react';
-import { useEffect } from 'react'
+import { useEffect } from 'react';
 import "./AllNotices.css"
 
 export const AllNotices = () => {
@@ -12,6 +12,7 @@ export const AllNotices = () => {
     getAllNotices();
   },[notices]);
 
+  // For All Notices.
   const getAllNotices = ()=>{
     setLoading(true);
     axios.get("https://notice-board-z3uw.onrender.com/notices")
@@ -22,7 +23,6 @@ export const AllNotices = () => {
 
   if(loading){
     return <img style={{display:"flex", margin:"auto", marginTop:"140px"}} src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif?20151024034921" alt="loading" />
-
   }
 
   return (

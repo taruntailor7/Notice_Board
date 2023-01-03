@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import axios from 'axios'
@@ -15,7 +16,6 @@ export const Login = () => {
         if(user){
             return navigate("/notices");
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
     const showToastSuccessMessage = (msg) => {
@@ -23,6 +23,7 @@ export const Login = () => {
             position: toast.POSITION.TOP_CENTER
         });
     };
+
     const showToastErrorMessage = (msg) => {
         toast.error(msg, {
             position: toast.POSITION.TOP_CENTER
@@ -32,7 +33,7 @@ export const Login = () => {
     const handleChange = (e) => {
         setUsername(e.target.value);
     }
-
+    // For Login.
     const handleSubmit = (e)=>{
         e.preventDefault();
         axios.post("https://notice-board-z3uw.onrender.com/auth/login",{username})

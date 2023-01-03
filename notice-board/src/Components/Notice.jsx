@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
@@ -16,7 +17,6 @@ export const Notice = () => {
     if(!username){
       return navigate("/")
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
   const showToastSuccessMessage = (msg) => {
@@ -24,6 +24,7 @@ export const Notice = () => {
         position: toast.POSITION.TOP_CENTER
     });
   };
+
   const showToastErrorMessage = (msg) => {
       toast.error(msg, {
           position: toast.POSITION.TOP_CENTER
@@ -33,7 +34,7 @@ export const Notice = () => {
   const handleChange = (e) => {
     setDesc(e.target.value);
   }
-
+  // For Creating a Notice.
   const handleSubmit = (e) =>{
     e.preventDefault();
     axios.post("https://notice-board-z3uw.onrender.com/notices/create",{
