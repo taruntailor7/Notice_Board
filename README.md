@@ -1,5 +1,5 @@
 # Notice_Board
 
-# Frontend -- Main Branch
+# Frontend --> Inside Main Branch
 
-# Backend -- Services Branch
+# Backend --> Inside Services Branch
