@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router';
 
 export const Login = () => {
     const [username,setUsername] = useState("");
+    let user = JSON.parse(sessionStorage.getItem("username")) || false ;
     const navigate = useNavigate();
+
+    useEffect(()=>{
+        if(user){
+            return navigate("/notices");
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[]);
 
     const handleChange = (e) => {
         setUsername(e.target.value);
@@ -18,13 +26,13 @@ export const Login = () => {
                 if(res.data.error){
                     alert(res.data.message);
                 } else{
-                    localStorage.setItem("username",JSON.stringify(res.data.data.username))
+                    sessionStorage.setItem("username",JSON.stringify(res.data.data.username))
                     alert(res.data.message);
                     navigate("/notices");
                 }
             });
         } catch (error) {
-            console.log(error,"errrr");
+            console.log(error,"error");
         }
     }
 
