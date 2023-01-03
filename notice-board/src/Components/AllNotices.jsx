@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react'
+import "./AllNotices.css"
 
 export const AllNotices = () => {
   const [notices, setNotices] = useState([]);
@@ -29,9 +30,10 @@ export const AllNotices = () => {
        {notices.map((notice)=>(
           <div key={notice._id}>
             <p>{notice.desc}</p>
-            <p>{notice.username}</p>
-            <p>{new Date(notice.createdAt).toDateString()}</p>
-            <p>{new Date(notice.createdAt).toLocaleTimeString()}</p>
+            <div className='noticeDetails'>
+              <p>{notice.username}</p>
+              <p>{new Date(notice.createdAt).toDateString()} {new Date(notice.createdAt).toLocaleTimeString()}</p>
+            </div>
           </div>
         ))}
     </div>

@@ -1,6 +1,6 @@
 .notice{
-    width: 100%;
-    padding: 0px 300px;
+    width:70%;
+    margin: auto;
 }
 h1{
     text-align: center;
@@ -15,7 +15,8 @@ h2{
     width: 100%;  
     border: 2px solid black;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 5px; 
+    font-size: 18px;
 }
 .submitBtn{
     width: 100px;
@@ -26,5 +27,5 @@ h2{
     margin-top: 10px;
     border-radius: 5px;
     background: #000;
-    margin-left: 820px;
+    margin-left: 965px;
 }

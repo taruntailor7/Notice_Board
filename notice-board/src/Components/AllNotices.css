@@ -1,0 +1,27 @@
+.allNotices{
+    width:70%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 50px;
+}
+.allNotices>div{
+    width:100%;
+    padding: 0px 20px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.allNotices>div>p{
+    font-size:20px;
+    font-weight: 500;
+    font-family: sans-serif;
+    text-align: justify;
+}
+.noticeDetails{
+    display: flex;
+    justify-content: space-between;
+}
+.noticeDetails>p{
+    font-family: sans-serif;
+}
