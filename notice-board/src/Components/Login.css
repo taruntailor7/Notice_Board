@@ -19,7 +19,8 @@ h2{
     outline: none;
 }
 .loginBtn{
-    width:38%;
+    width:40%;
+    height: 50px;
     padding: 10px;
     outline: none;
     background-color: black;
@@ -27,4 +28,11 @@ h2{
     font-size: 20px;
     margin-top: 15px;
     border-radius: 5px;
+}
+.loadingImg{
+    width:40%;
+    height: 50px;
+    margin-top: 15px;
+    border-radius: 5px;
+    object-fit: cover;
 }

@@ -9,6 +9,7 @@ import "./Login.css"
 
 export const Login = () => {
     const [username,setUsername] = useState("");
+    const [loading,setLoading] = useState(false);
     const navigate = useNavigate();
     let user = JSON.parse(sessionStorage.getItem("username")) || false ;
 
@@ -36,16 +37,19 @@ export const Login = () => {
     // For Login.
     const handleSubmit = (e)=>{
         e.preventDefault();
+        setLoading(true);
         axios.post("https://notice-board-z3uw.onrender.com/auth/login",{username})
         .then((res)=>{
             if(res.data.error){
                 showToastErrorMessage(res.data.message);
+                setLoading(false);
             } else{
                 sessionStorage.setItem("username",JSON.stringify(res.data.data.username));
                 showToastSuccessMessage(res.data.message);
                 setTimeout(()=>{
                     navigate("/notices");
-                },2000);
+                    setLoading(false);
+                },1500);
             }
         }).catch((err)=>console.log(err));
     }
@@ -55,7 +59,7 @@ export const Login = () => {
             <form onSubmit={handleSubmit}>
                 <h2>Pick a username</h2>
                 <input className='username' type="text" placeholder='Enter Username' name="username" value={username} onChange={handleChange} required/>
-                <button className='loginBtn' type="submit">Login</button>
+                {loading ? <img className="loadingImg" src="https://media.tenor.com/aK9YaZum7RkAAAAC/excited-loading.gif" alt="loader"/> :<button className='loginBtn' type="submit">Login</button>}
             </form>
             <ToastContainer />
         </div>
