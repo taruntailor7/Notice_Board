@@ -11,6 +11,7 @@ import "./Notice.css"
 export const Notice = () => {
   const [desc, setDesc] = useState();
   const [loading, setLoading] = useState(false);
+  const [handleState, setHandleState] = useState(0);
   const navigate = useNavigate();
   let username = JSON.parse(sessionStorage.getItem("username")) || false ;
 
@@ -45,6 +46,7 @@ export const Notice = () => {
     .then((res)=>{
       showToastSuccessMessage(res.data.message);
       setDesc("");
+      setHandleState(prev=>prev+1);
       setLoading(false);
     }) 
     .catch(()=>{
@@ -65,7 +67,7 @@ export const Notice = () => {
             </div>
         </form>
       </div>
-      <AllNotices />
+      <AllNotices handleState={handleState} />
       <ToastContainer />
     </>
   )

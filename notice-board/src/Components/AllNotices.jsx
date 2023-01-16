@@ -4,13 +4,13 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import "./AllNotices.css"
 
-export const AllNotices = () => {
+export const AllNotices = ({handleState}) => {
   const [notices, setNotices] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(()=>{
     getAllNotices();
-  },[notices]);
+  },[handleState]);
 
   // For All Notices.
   const getAllNotices = ()=>{
